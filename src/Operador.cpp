@@ -11,9 +11,15 @@ Operador::Operador(int id, string nome, string cpf, string senha, string turno)
     : Pessoa(id, std::move(nome), std::move(cpf), std::move(senha)), 
       turno(std::move(turno)) {}
 
+void Operador::setTurno(const string& turno) {
+    if (turno.empty()) {
+        throw DadoInvalidoException("Turno não pode ser vazio");
+    }
+    this->turno = turno;
+}
+
 void Operador::acessarTerminal() const {
-    cout << "[OPERADOR] Iniciando sessão de terminal..." << endl;
-    cout << "[OPERADOR] Operador '" << nome << "' (Turno: " << turno << ") conectado." << endl;
+    cout << "[Operador] Visualizando lista de terminais..." << endl;
 }
 
 json Operador::toJson() const {

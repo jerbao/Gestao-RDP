@@ -11,9 +11,15 @@ Administrador::Administrador(int id, string nome, string cpf, string senha, stri
     : Pessoa(id, std::move(nome), std::move(cpf), std::move(senha)), 
       chaveMestra(std::move(chaveMestra)) {}
 
+void Administrador::setChaveMestra(const string& chave) {
+    if (chave.empty()) {
+        throw DadoInvalidoException("Chave mestra não pode ser vazia");
+    }
+    this->chaveMestra = chave;
+}
+
 void Administrador::gerenciarUsuarios() const {
-    cout << "[ADMIN] Acessando painel de gerenciamento de usuários..." << endl;
-    cout << "[ADMIN] Administrador '" << nome << "' com acesso total ao sistema." << endl;
+    cout << "[Admin] Acessando painel de gestão de usuários..." << endl;
 }
 
 json Administrador::toJson() const {

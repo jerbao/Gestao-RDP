@@ -42,9 +42,11 @@ public:
     std::string getChaveMestra() const { return chaveMestra; }
     
     /**
-     * @brief Setters
+     * @brief Define a chave mestra com validação
+     * @param chave Nova chave mestra
+     * @throws DadoInvalidoException se a chave for vazia
      */
-    void setChaveMestra(const std::string& chave) { this->chaveMestra = chave; }
+    void setChaveMestra(const std::string& chave);
     
     /**
      * @brief Serializa o objeto para JSON

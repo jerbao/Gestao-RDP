@@ -59,10 +59,18 @@ public:
     std::string getUsuarioRDP() const { return usuarioRDP; }
     
     /**
-     * @brief Setters
+     * @brief Define o sistema operacional com validação
+     * @param so Novo sistema operacional
+     * @throws DadoInvalidoException se o SO for vazio
      */
-    void setSistemaOperacional(const std::string& so) { this->sistemaOperacional = so; }
-    void setVmid(int vmid) { this->vmid = vmid; }
+    void setSistemaOperacional(const std::string& so);
+    
+    /**
+     * @brief Define o VMID com validação
+     * @param vmid Novo ID da VM
+     * @throws DadoInvalidoException se vmid <= 0
+     */
+    void setVmid(int vmid);
     
     /**
      * @brief Serializa o objeto para JSON

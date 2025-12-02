@@ -13,6 +13,9 @@ TerminalCliente::TerminalCliente(int id, string ip, string hostname, bool online
       macAddress(std::move(macAddress)), localizacao(std::move(localizacao)) {}
 
 void TerminalCliente::setLocalizacao(const string& local) {
+    if (local.empty()) {
+        throw DadoInvalidoException("Localização não pode ser vazia");
+    }
     this->localizacao = local;
 }
 
@@ -24,10 +27,8 @@ void TerminalCliente::setMacAddress(const string& mac) {
 }
 
 void TerminalCliente::enviarComandoWakeOnLan() const {
-    cout << "[WOL] Enviando Magic Packet para despertar terminal..." << endl;
-    cout << "[WOL] Destino MAC: " << macAddress << endl;
-    cout << "[WOL] Localização: " << localizacao << endl;
-    cout << "[WOL] Comando Wake-on-LAN enviado com sucesso!" << endl;
+    cout << "[LOG] Registrando solicitação de Wake-on-LAN para o terminal " 
+         << hostname << " (MAC: " << macAddress << ")" << endl;
 }
 
 json TerminalCliente::toJson() const {

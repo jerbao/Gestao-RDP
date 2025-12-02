@@ -42,9 +42,11 @@ public:
     std::string getTurno() const { return turno; }
     
     /**
-     * @brief Setters
+     * @brief Define o turno com validação
+     * @param turno Novo turno de trabalho
+     * @throws DadoInvalidoException se o turno for vazio
      */
-    void setTurno(const std::string& turno) { this->turno = turno; }
+    void setTurno(const std::string& turno);
     
     /**
      * @brief Serializa o objeto para JSON

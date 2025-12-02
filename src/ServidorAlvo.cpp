@@ -15,22 +15,40 @@ ServidorAlvo::ServidorAlvo(int id, string ip, string hostname, bool online,
       sistemaOperacional(std::move(sistemaOperacional)), vmid(vmid),
       usuarioRDP(std::move(usuarioRDP)), senhaRDP(std::move(senhaRDP)) {}
 
+void ServidorAlvo::setSistemaOperacional(const string& so) {
+    if (so.empty()) {
+        throw DadoInvalidoException("Sistema operacional não pode ser vazio");
+    }
+    this->sistemaOperacional = so;
+}
+
+void ServidorAlvo::setVmid(int vmid) {
+    if (vmid <= 0) {
+        throw DadoInvalidoException("VMID deve ser maior que zero");
+    }
+    this->vmid = vmid;
+}
+
 void ServidorAlvo::atualizarCredenciais(const string& user, const string& pass) {
+    if (user.empty()) {
+        throw DadoInvalidoException("Usuário RDP não pode ser vazio");
+    }
+    if (pass.empty()) {
+        throw DadoInvalidoException("Senha RDP não pode ser vazia");
+    }
     this->usuarioRDP = user;
     this->senhaRDP = pass;
-    cout << "[RDP] Credenciais atualizadas para o servidor '" << hostname << "'." << endl;
 }
 
 void ServidorAlvo::conectarRDP() const {
-    cout << "[RDP] Iniciando conexão Remote Desktop..." << endl;
-    cout << "[RDP] Servidor: " << ip << ":3389" << endl;
-    cout << "[RDP] Hostname: " << hostname << endl;
-    cout << "[RDP] Sistema: " << sistemaOperacional << endl;
-    cout << "[RDP] Usuário: " << usuarioRDP << endl;
+    cout << "Dados de Conexão RDP:" << endl;
+    cout << "  IP: " << ip << endl;
+    cout << "  Porta: 3389" << endl;
+    cout << "  Usuário: " << usuarioRDP << endl;
+    cout << "  Sistema: " << sistemaOperacional << endl;
     if (vmid > 0) {
-        cout << "[RDP] VM ID: " << vmid << endl;
+        cout << "  VM ID (Proxmox): " << vmid << endl;
     }
-    cout << "[RDP] Conexão estabelecida com sucesso!" << endl;
 }
 
 json ServidorAlvo::toJson() const {

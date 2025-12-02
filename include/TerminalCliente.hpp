@@ -35,8 +35,9 @@ public:
     ~TerminalCliente() override = default;
     
     /**
-     * @brief Define a localização do terminal
+     * @brief Define a localização do terminal com validação
      * @param local Nova localização
+     * @throws DadoInvalidoException se a localização for vazia
      */
     void setLocalizacao(const std::string& local);
     
