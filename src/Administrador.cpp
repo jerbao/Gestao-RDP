@@ -38,8 +38,6 @@ void Administrador::fromJson(const json& dados) {
 
 void Administrador::exibirDetalhes() const {
     cout << "=== Detalhes do Administrador ===" << endl;
-    cout << "ID: " << id << endl;
-    cout << "Nome: " << nome << endl;
-    cout << "CPF: " << cpf << endl;
+    Pessoa::exibirDetalhesBase();
     cout << "Chave Mestra: " << (chaveMestra.empty() ? "Não definida" : "********") << endl;
 }

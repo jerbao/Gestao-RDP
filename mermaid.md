@@ -82,12 +82,14 @@ classDiagram
 
     class PerfilAcesso {
         -int id
+        -string nomePerfil
         -bool telaCheia
         -string resolucao
         -bool somHabilitado
         -bool mapearDrives
     }
     PerfilAcesso ..|> ISerializavel
+    PerfilAcesso ..|> IExibivel
 
     class LogAuditoria {
         -int id
@@ -105,11 +107,25 @@ classDiagram
         -int idDispositivo
     }
     ManutencaoAgendada ..|> ISerializavel
+    ManutencaoAgendada ..|> IExibivel
+
+    %% --- NOVA CLASSE DE CONFIGURAÇÃO (Adicionada no código) ---
+    class ConfiguracaoUsuario {
+        -string nomeExibicao
+        -string tema
+        +setNomeExibicao(string nome)
+        +setTema(string tema)
+        +exibirDetalhes()
+    }
+    ConfiguracaoUsuario ..|> ISerializavel
 
     %% --- GESTÃO DE ARQUIVOS E ERROS ---
     class GerenciadorArquivos {
         +salvarLista(vector lista, string arquivo)
         +carregarLista(string arquivo)
+        +salvarConfig(ConfiguracaoUsuario config, string arquivo)
+        +carregarConfig(ConfiguracaoUsuario config, string arquivo)
+        +arquivoExiste(string arquivo) bool
     }
     
     class Exception {
@@ -125,4 +141,5 @@ classDiagram
     Exception <|-- DadoInvalidoException
     Exception <|-- PersistenciaException
     Dispositivo ..> DadoInvalidoException : lança
+    Pessoa ..> DadoInvalidoException : lança
     GerenciadorArquivos ..> PersistenciaException : lança

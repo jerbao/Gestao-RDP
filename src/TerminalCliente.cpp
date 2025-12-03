@@ -51,10 +51,7 @@ void TerminalCliente::fromJson(const json& dados) {
 
 void TerminalCliente::exibirDetalhes() const {
     cout << "=== Detalhes do Terminal Cliente ===" << endl;
-    cout << "ID: " << id << endl;
-    cout << "IP: " << ip << endl;
-    cout << "Hostname: " << hostname << endl;
-    cout << "Status: " << (online ? "Online" : "Offline") << endl;
+    Dispositivo::exibirDetalhesBase();
     cout << "MAC Address: " << macAddress << endl;
     cout << "Localização: " << (localizacao.empty() ? "Não definida" : localizacao) << endl;
 }

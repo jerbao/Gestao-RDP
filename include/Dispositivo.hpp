@@ -81,7 +81,14 @@ public:
     void fromJson(const nlohmann::json& dados) override;
     
     /**
-     * @brief Exibe os detalhes do dispositivo (implementação base)
+     * @brief Exibe os detalhes do dispositivo (método puramente virtual)
+     * @note Classes derivadas devem implementar este método
      */
-    void exibirDetalhes() const override;
+    void exibirDetalhes() const override = 0;
+    
+    /**
+     * @brief Exibe os detalhes base do dispositivo (ID, IP, Hostname, Status)
+     * @note Método auxiliar para ser chamado pelas classes derivadas
+     */
+    void exibirDetalhesBase() const;
 };

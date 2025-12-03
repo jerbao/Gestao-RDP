@@ -51,8 +51,7 @@ void Dispositivo::fromJson(const json& dados) {
     }
 }
 
-void Dispositivo::exibirDetalhes() const {
-    cout << "=== Detalhes do Dispositivo ===" << endl;
+void Dispositivo::exibirDetalhesBase() const {
     cout << "ID: " << id << endl;
     cout << "IP: " << ip << endl;
     cout << "Hostname: " << hostname << endl;

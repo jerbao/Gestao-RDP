@@ -49,10 +49,8 @@ void Pessoa::fromJson(const json& dados) {
     }
 }
 
-void Pessoa::exibirDetalhes() const {
-    cout << "=== Detalhes da Pessoa ===" << endl;
+void Pessoa::exibirDetalhesBase() const {
     cout << "ID: " << id << endl;
     cout << "Nome: " << nome << endl;
     cout << "CPF: " << cpf << endl;
-    cout << "Senha: " << (senha.empty() ? "Não definida" : "********") << endl;
 }

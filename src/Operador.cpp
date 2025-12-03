@@ -38,8 +38,6 @@ void Operador::fromJson(const json& dados) {
 
 void Operador::exibirDetalhes() const {
     cout << "=== Detalhes do Operador ===" << endl;
-    cout << "ID: " << id << endl;
-    cout << "Nome: " << nome << endl;
-    cout << "CPF: " << cpf << endl;
+    Pessoa::exibirDetalhesBase();
     cout << "Turno: " << (turno.empty() ? "Não definido" : turno) << endl;
 }

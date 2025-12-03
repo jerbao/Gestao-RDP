@@ -79,10 +79,7 @@ void ServidorAlvo::fromJson(const json& dados) {
 
 void ServidorAlvo::exibirDetalhes() const {
     cout << "=== Detalhes do Servidor Alvo ===" << endl;
-    cout << "ID: " << id << endl;
-    cout << "IP: " << ip << endl;
-    cout << "Hostname: " << hostname << endl;
-    cout << "Status: " << (online ? "Online" : "Offline") << endl;
+    Dispositivo::exibirDetalhesBase();
     cout << "Sistema Operacional: " << sistemaOperacional << endl;
     cout << "VM ID: " << (vmid > 0 ? to_string(vmid) : "N/A (físico)") << endl;
     cout << "Usuário RDP: " << usuarioRDP << endl;
