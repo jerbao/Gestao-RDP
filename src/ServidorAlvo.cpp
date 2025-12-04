@@ -5,6 +5,7 @@
 using namespace std;
 using json = nlohmann::json;
 
+//construtores
 ServidorAlvo::ServidorAlvo() 
     : Dispositivo(), sistemaOperacional(""), vmid(0), usuarioRDP(""), senhaRDP("") {}
 
@@ -15,6 +16,7 @@ ServidorAlvo::ServidorAlvo(int id, string ip, string hostname, bool online,
       sistemaOperacional(std::move(sistemaOperacional)), vmid(vmid),
       usuarioRDP(std::move(usuarioRDP)), senhaRDP(std::move(senhaRDP)) {}
 
+//setters
 void ServidorAlvo::setSistemaOperacional(const string& so) {
     if (so.empty()) {
         throw DadoInvalidoException("Sistema operacional não pode ser vazio");
@@ -40,6 +42,7 @@ void ServidorAlvo::atualizarCredenciais(const string& user, const string& pass) 
     this->senhaRDP = pass;
 }
 
+//métodos
 void ServidorAlvo::conectarRDP() const {
     cout << "Dados de Conexão RDP:" << endl;
     cout << "  IP: " << ip << endl;
@@ -51,6 +54,7 @@ void ServidorAlvo::conectarRDP() const {
     }
 }
 
+//serialização (Iserializavel)
 json ServidorAlvo::toJson() const {
     json j = Dispositivo::toJson();
     j["sistemaOperacional"] = sistemaOperacional;
@@ -77,6 +81,7 @@ void ServidorAlvo::fromJson(const json& dados) {
     }
 }
 
+//exibição (Iexibivel)
 void ServidorAlvo::exibirDetalhes() const {
     cout << "=== Detalhes do Servidor Alvo ===" << endl;
     Dispositivo::exibirDetalhesBase();

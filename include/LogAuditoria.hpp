@@ -4,18 +4,21 @@
 #include "IExibivel.hpp"
 #include <string>
 
+//classe logauditoria
 /**
  * @brief Classe que representa um registro de Log de Auditoria
  * @note Esta classe serve para registro histórico de ações no sistema de gestão
  */
 class LogAuditoria : public ISerializavel, public IExibivel {
 private:
+    //atributos
     int id;
     std::string dataHora;
     std::string acao;
     std::string cpfUsuario;
 
 public:
+    //construtores e destrutor
     /**
      * @brief Construtor padrão
      */
@@ -35,6 +38,7 @@ public:
      */
     ~LogAuditoria() override = default;
     
+    // ==================== GETTERS ====================
     /**
      * @brief Getters
      */
@@ -43,6 +47,7 @@ public:
     std::string getAcao() const { return acao; }
     std::string getCpfUsuario() const { return cpfUsuario; }
     
+    // ==================== SETTERS ====================
     /**
      * @brief Setters com validação
      */
@@ -51,6 +56,7 @@ public:
     void setAcao(const std::string& acao);
     void setCpfUsuario(const std::string& cpfUsuario);
     
+    //serialização (Iserializavel)
     /**
      * @brief Serializa o objeto para JSON
      * @return Objeto JSON com os dados do log
@@ -63,6 +69,7 @@ public:
      */
     void fromJson(const nlohmann::json& dados) override;
     
+    //exibição (Iexibivel)
     /**
      * @brief Exibe os detalhes do log de auditoria
      */

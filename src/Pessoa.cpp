@@ -5,15 +5,13 @@
 using namespace std;
 using json = nlohmann::json;
 
+//construtores
 Pessoa::Pessoa() : id(0), nome(""), cpf(""), senha("") {}
 
 Pessoa::Pessoa(int id, string nome, string cpf, string senha)
     : id(id), nome(std::move(nome)), cpf(std::move(cpf)), senha(std::move(senha)) {}
 
-bool Pessoa::verificarSenha(const string& tentativa) const {
-    return senha == tentativa;
-}
-
+//setters
 void Pessoa::setCpf(const string& cpf) {
     if (cpf.empty() || cpf.length() != 11) {
         throw DadoInvalidoException("CPF inválido: deve conter exatamente 11 caracteres");
@@ -25,6 +23,12 @@ void Pessoa::setSenha(const string& novaSenha) {
     this->senha = novaSenha;
 }
 
+//métodos
+bool Pessoa::verificarSenha(const string& tentativa) const {
+    return senha == tentativa;
+}
+
+//serialização (Iserializavel)
 json Pessoa::toJson() const {
     json j;
     j["id"] = id;
@@ -49,6 +53,7 @@ void Pessoa::fromJson(const json& dados) {
     }
 }
 
+//exibição (Iexibivel)
 void Pessoa::exibirDetalhesBase() const {
     cout << "ID: " << id << endl;
     cout << "Nome: " << nome << endl;

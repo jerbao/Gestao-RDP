@@ -5,17 +5,21 @@
 #include "DadoInvalidoException.hpp"
 #include <string>
 
+//classe abstrata pessoa
 /**
  * @brief Classe abstrata base para representação de pessoas no sistema
+ * @note Classes derivadas: Administrador, Operador
  */
 class Pessoa : public ISerializavel, public IExibivel {
 protected:
+    //atributos
     int id;
     std::string nome;
     std::string cpf;
     std::string senha;
 
 public:
+    //construtores e destrutor
     /**
      * @brief Construtor padrão
      */
@@ -35,12 +39,20 @@ public:
      */
     virtual ~Pessoa() = default;
     
+    //getters
     /**
-     * @brief Verifica se a senha fornecida corresponde à senha armazenada
-     * @param tentativa Senha a ser verificada
-     * @return true se a senha estiver correta, false caso contrário
+     * @brief Getters
      */
-    bool verificarSenha(const std::string& tentativa) const;
+    int getId() const { return id; }
+    std::string getNome() const { return nome; }
+    std::string getCpf() const { return cpf; }
+    
+    //setters
+    /**
+     * @brief Setters básicos
+     */
+    void setId(int id) { this->id = id; }
+    void setNome(const std::string& nome) { this->nome = nome; }
     
     /**
      * @brief Define um novo CPF com validação
@@ -55,19 +67,15 @@ public:
      */
     void setSenha(const std::string& novaSenha);
     
+    //métodos
     /**
-     * @brief Getters
+     * @brief Verifica se a senha fornecida corresponde à senha armazenada
+     * @param tentativa Senha a ser verificada
+     * @return true se a senha estiver correta, false caso contrário
      */
-    int getId() const { return id; }
-    std::string getNome() const { return nome; }
-    std::string getCpf() const { return cpf; }
+    bool verificarSenha(const std::string& tentativa) const;
     
-    /**
-     * @brief Setters básicos
-     */
-    void setId(int id) { this->id = id; }
-    void setNome(const std::string& nome) { this->nome = nome; }
-    
+    //serialização (Iserializavel)
     /**
      * @brief Serializa o objeto para JSON
      * @return Objeto JSON com os dados da pessoa
@@ -80,6 +88,7 @@ public:
      */
     void fromJson(const nlohmann::json& dados) override;
     
+    //exibição (Iexibivel)
     /**
      * @brief Exibe os detalhes da pessoa (método puramente virtual)
      * @note Classes derivadas devem implementar este método

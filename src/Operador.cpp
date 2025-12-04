@@ -5,12 +5,14 @@
 using namespace std;
 using json = nlohmann::json;
 
+//construtores
 Operador::Operador() : Pessoa(), turno("") {}
 
 Operador::Operador(int id, string nome, string cpf, string senha, string turno)
     : Pessoa(id, std::move(nome), std::move(cpf), std::move(senha)), 
       turno(std::move(turno)) {}
 
+//setters
 void Operador::setTurno(const string& turno) {
     if (turno.empty()) {
         throw DadoInvalidoException("Turno não pode ser vazio");
@@ -18,10 +20,12 @@ void Operador::setTurno(const string& turno) {
     this->turno = turno;
 }
 
+//métodos
 void Operador::acessarTerminal() const {
     cout << "[Operador] Visualizando lista de terminais..." << endl;
 }
 
+//serialização (Iserializavel)
 json Operador::toJson() const {
     json j = Pessoa::toJson();
     j["turno"] = turno;
@@ -36,6 +40,7 @@ void Operador::fromJson(const json& dados) {
     }
 }
 
+//exibição (Iexibivel)
 void Operador::exibirDetalhes() const {
     cout << "=== Detalhes do Operador ===" << endl;
     Pessoa::exibirDetalhesBase();

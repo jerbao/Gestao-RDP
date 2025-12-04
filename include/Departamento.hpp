@@ -4,16 +4,20 @@
 #include "IExibivel.hpp"
 #include <string>
 
+//classe departamento
 /**
  * @brief Classe que representa um Departamento/Setor da organização
+ * @note Entidade de suporte para organização dos usuários e terminais
  */
 class Departamento : public ISerializavel, public IExibivel {
 private:
+    //atributos
     int id;
     std::string nomeSetor;
     std::string responsavel;
 
 public:
+    //construtores e destrutor
     /**
      * @brief Construtor padrão
      */
@@ -32,6 +36,7 @@ public:
      */
     ~Departamento() override = default;
     
+    //getters
     /**
      * @brief Getters
      */
@@ -39,6 +44,7 @@ public:
     std::string getNomeSetor() const { return nomeSetor; }
     std::string getResponsavel() const { return responsavel; }
     
+    //setters
     /**
      * @brief Setters com validação
      */
@@ -46,6 +52,7 @@ public:
     void setNomeSetor(const std::string& nomeSetor);
     void setResponsavel(const std::string& responsavel);
     
+    //serialização (Iserializavel)
     /**
      * @brief Serializa o objeto para JSON
      * @return Objeto JSON com os dados do departamento
@@ -58,6 +65,7 @@ public:
      */
     void fromJson(const nlohmann::json& dados) override;
     
+    //exibição (Iexibivel)
     /**
      * @brief Exibe os detalhes do departamento
      */

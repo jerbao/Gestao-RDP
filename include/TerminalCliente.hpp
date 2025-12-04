@@ -3,15 +3,19 @@
 #include "Dispositivo.hpp"
 #include <string>
 
+//classe terminalCliente
 /**
  * @brief Classe que representa um Terminal Cliente (thin client)
+ * @note Herda de Dispositivo. Possui MAC e localização para Wake-on-LAN
  */
 class TerminalCliente : public Dispositivo {
 private:
+    //atributos
     std::string macAddress;
     std::string localizacao;
 
 public:
+    //construtores e destrutor
     /**
      * @brief Construtor padrão
      */
@@ -34,6 +38,14 @@ public:
      */
     ~TerminalCliente() override = default;
     
+    //getters
+    /**
+     * @brief Getters
+     */
+    std::string getMacAddress() const { return macAddress; }
+    std::string getLocalizacao() const { return localizacao; }
+    
+    //setters
     /**
      * @brief Define a localização do terminal com validação
      * @param local Nova localização
@@ -48,17 +60,13 @@ public:
      */
     void setMacAddress(const std::string& mac);
     
+    //métodos
     /**
      * @brief Simula envio de comando Wake-on-LAN
      */
     void enviarComandoWakeOnLan() const;
     
-    /**
-     * @brief Getters
-     */
-    std::string getMacAddress() const { return macAddress; }
-    std::string getLocalizacao() const { return localizacao; }
-    
+    //serialização (Iserializavel)
     /**
      * @brief Serializa o objeto para JSON
      * @return Objeto JSON com os dados do terminal
@@ -71,6 +79,7 @@ public:
      */
     void fromJson(const nlohmann::json& dados) override;
     
+    //exibição (Iexibivel)
     /**
      * @brief Exibe os detalhes do terminal
      */

@@ -6,6 +6,7 @@
 using namespace std;
 using json = nlohmann::json;
 
+//construtores
 PerfilAcesso::PerfilAcesso() 
     : id(0), nomePerfil(""), telaCheia(false), resolucao(""), 
       somHabilitado(false), mapearDrives(false) {}
@@ -16,6 +17,7 @@ PerfilAcesso::PerfilAcesso(int id, string nomePerfil, bool telaCheia,
       resolucao(std::move(resolucao)), somHabilitado(somHabilitado), 
       mapearDrives(mapearDrives) {}
 
+//setters
 void PerfilAcesso::setId(int id) {
     if (id <= 0) {
         throw DadoInvalidoException("ID do perfil deve ser maior que zero");
@@ -37,6 +39,7 @@ void PerfilAcesso::setResolucao(const string& resolucao) {
     this->resolucao = resolucao;
 }
 
+//serialização (Iserializavel)
 json PerfilAcesso::toJson() const {
     json j;
     j["id"] = id;
@@ -70,6 +73,7 @@ void PerfilAcesso::fromJson(const json& dados) {
     }
 }
 
+//exibição (Iexibivel)
 void PerfilAcesso::exibirDetalhes() const {
     cout << "=== Detalhes do Perfil de Acesso ===" << endl;
     cout << "ID: " << id << endl;

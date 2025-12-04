@@ -6,12 +6,14 @@
 using namespace std;
 using json = nlohmann::json;
 
+//construtores
 LogAuditoria::LogAuditoria() : id(0), dataHora(""), acao(""), cpfUsuario("") {}
 
 LogAuditoria::LogAuditoria(int id, string dataHora, string acao, string cpfUsuario)
     : id(id), dataHora(std::move(dataHora)), acao(std::move(acao)), 
       cpfUsuario(std::move(cpfUsuario)) {}
 
+//setters
 void LogAuditoria::setId(int id) {
     if (id <= 0) {
         throw DadoInvalidoException("ID do log deve ser maior que zero");
@@ -40,6 +42,7 @@ void LogAuditoria::setCpfUsuario(const string& cpfUsuario) {
     this->cpfUsuario = cpfUsuario;
 }
 
+//serialização (Iserializavel)
 json LogAuditoria::toJson() const {
     json j;
     j["id"] = id;
@@ -65,6 +68,7 @@ void LogAuditoria::fromJson(const json& dados) {
     }
 }
 
+//exibição (Iexibivel)
 void LogAuditoria::exibirDetalhes() const {
     cout << "=== Log de Auditoria ===" << endl;
     cout << "ID: " << id << endl;

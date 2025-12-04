@@ -5,11 +5,13 @@
 using namespace std;
 using json = nlohmann::json;
 
+//construtores
 Dispositivo::Dispositivo() : id(0), ip(""), hostname(""), online(false) {}
 
 Dispositivo::Dispositivo(int id, string ip, string hostname, bool online)
     : id(id), ip(std::move(ip)), hostname(std::move(hostname)), online(online) {}
 
+//setters
 void Dispositivo::setIp(const string& novoIp) {
     if (novoIp.empty() || novoIp.length() < 7) {
         throw DadoInvalidoException("Endereço IP inválido: deve ter pelo menos 7 caracteres (x.x.x.x)");
@@ -21,12 +23,14 @@ void Dispositivo::setHostname(const string& novoNome) {
     this->hostname = novoNome;
 }
 
+//métodos
 bool Dispositivo::ping() const {
-    // Simula verificação de ping retornando o status online
-    // Em uma implementação real, poderia executar um comando ping real
+    //tá simulando a verificação de ping, aí como só simula, retorna online mesmo
+    //lembrar de mudar isso quando for implementar de verdade
     return online;
 }
 
+//serialização (Iserializavel)
 json Dispositivo::toJson() const {
     json j;
     j["id"] = id;
@@ -51,6 +55,7 @@ void Dispositivo::fromJson(const json& dados) {
     }
 }
 
+//exibição (Iexibivel)
 void Dispositivo::exibirDetalhesBase() const {
     cout << "ID: " << id << endl;
     cout << "IP: " << ip << endl;

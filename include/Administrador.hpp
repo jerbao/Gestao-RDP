@@ -1,16 +1,21 @@
 #pragma once
 
+// ==================== INCLUDES ====================
 #include "Pessoa.hpp"
 #include <string>
 
+// ==================== CLASSE ADMINISTRADOR ====================
 /**
  * @brief Classe que representa um Administrador do sistema
+ * @note Herda de Pessoa. Possui chave mestra para operações privilegiadas
  */
 class Administrador : public Pessoa {
 private:
+    // ==================== ATRIBUTOS ====================
     std::string chaveMestra;
 
 public:
+    // ==================== CONSTRUTORES E DESTRUTOR ====================
     /**
      * @brief Construtor padrão
      */
@@ -31,16 +36,13 @@ public:
      */
     ~Administrador() override = default;
     
-    /**
-     * @brief Simula gerenciamento de usuários
-     */
-    void gerenciarUsuarios() const;
-    
+    // ==================== GETTERS ====================
     /**
      * @brief Getters
      */
     std::string getChaveMestra() const { return chaveMestra; }
     
+    // ==================== SETTERS ====================
     /**
      * @brief Define a chave mestra com validação
      * @param chave Nova chave mestra
@@ -48,6 +50,13 @@ public:
      */
     void setChaveMestra(const std::string& chave);
     
+    // ==================== MÉTODOS ====================
+    /**
+     * @brief Simula gerenciamento de usuários
+     */
+    void gerenciarUsuarios() const;
+    
+    // ==================== SERIALIZAÇÃO (ISerializavel) ====================
     /**
      * @brief Serializa o objeto para JSON
      * @return Objeto JSON com os dados do administrador
@@ -60,6 +69,7 @@ public:
      */
     void fromJson(const nlohmann::json& dados) override;
     
+    // ==================== EXIBIÇÃO (IExibivel) ====================
     /**
      * @brief Exibe os detalhes do administrador
      */

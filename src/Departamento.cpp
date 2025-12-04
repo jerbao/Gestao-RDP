@@ -6,11 +6,13 @@
 using namespace std;
 using json = nlohmann::json;
 
+//construtores
 Departamento::Departamento() : id(0), nomeSetor(""), responsavel("") {}
 
 Departamento::Departamento(int id, string nomeSetor, string responsavel)
     : id(id), nomeSetor(std::move(nomeSetor)), responsavel(std::move(responsavel)) {}
 
+//setters
 void Departamento::setId(int id) {
     if (id <= 0) {
         throw DadoInvalidoException("ID do departamento deve ser maior que zero");
@@ -32,6 +34,7 @@ void Departamento::setResponsavel(const string& responsavel) {
     this->responsavel = responsavel;
 }
 
+//serialização (Iserializavel)
 json Departamento::toJson() const {
     json j;
     j["id"] = id;
@@ -53,6 +56,7 @@ void Departamento::fromJson(const json& dados) {
     }
 }
 
+//exibição (Iexibivel)
 void Departamento::exibirDetalhes() const {
     cout << "=== Detalhes do Departamento ===" << endl;
     cout << "ID: " << id << endl;

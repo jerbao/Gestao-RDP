@@ -6,6 +6,7 @@
 using namespace std;
 using json = nlohmann::json;
 
+//construtores
 ManutencaoAgendada::ManutencaoAgendada() 
     : id(0), dataPrevista(""), descricao(""), idDispositivo(0) {}
 
@@ -13,6 +14,7 @@ ManutencaoAgendada::ManutencaoAgendada(int id, string dataPrevista, string descr
     : id(id), dataPrevista(std::move(dataPrevista)), descricao(std::move(descricao)), 
       idDispositivo(idDispositivo) {}
 
+//setters
 void ManutencaoAgendada::setId(int id) {
     if (id <= 0) {
         throw DadoInvalidoException("ID da manutenção deve ser maior que zero");
@@ -41,6 +43,7 @@ void ManutencaoAgendada::setIdDispositivo(int idDispositivo) {
     this->idDispositivo = idDispositivo;
 }
 
+//serialização (Iserializavel)
 json ManutencaoAgendada::toJson() const {
     json j;
     j["id"] = id;
@@ -66,6 +69,7 @@ void ManutencaoAgendada::fromJson(const json& dados) {
     }
 }
 
+//exibição (Iexibivel)
 void ManutencaoAgendada::exibirDetalhes() const {
     cout << "=== Manutenção Agendada ===" << endl;
     cout << "ID: " << id << endl;

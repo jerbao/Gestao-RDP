@@ -3,14 +3,18 @@
 #include "Pessoa.hpp"
 #include <string>
 
+//classe operador
 /**
  * @brief Classe que representa um Operador do sistema
+ * @note Herda de Pessoa. Responsável por acessar terminais durante seu turno
  */
 class Operador : public Pessoa {
 private:
+    //atributos
     std::string turno;
 
 public:
+    //construtores e destrutor
     /**
      * @brief Construtor padrão
      */
@@ -31,16 +35,13 @@ public:
      */
     ~Operador() override = default;
     
-    /**
-     * @brief Simula acesso ao terminal
-     */
-    void acessarTerminal() const;
-    
+    //getters
     /**
      * @brief Getters
      */
     std::string getTurno() const { return turno; }
     
+    //setters
     /**
      * @brief Define o turno com validação
      * @param turno Novo turno de trabalho
@@ -48,6 +49,13 @@ public:
      */
     void setTurno(const std::string& turno);
     
+    //métodos
+    /**
+     * @brief Simula acesso ao terminal
+     */
+    void acessarTerminal() const;
+    
+    //serialização (Iserializavel)
     /**
      * @brief Serializa o objeto para JSON
      * @return Objeto JSON com os dados do operador
@@ -60,6 +68,7 @@ public:
      */
     void fromJson(const nlohmann::json& dados) override;
     
+    //exibição (Iexibivel)
     /**
      * @brief Exibe os detalhes do operador
      */

@@ -4,11 +4,14 @@
 #include "IExibivel.hpp"
 #include <string>
 
+//classe perfilacesso
 /**
  * @brief Classe que representa um Perfil de Acesso com configurações salvas
+ * @note Armazena configurações de conexão RDP (resolução, tela cheia, etc.)
  */
 class PerfilAcesso : public ISerializavel, public IExibivel {
 private:
+    //atributos
     int id;
     std::string nomePerfil;
     bool telaCheia;
@@ -17,6 +20,7 @@ private:
     bool mapearDrives;
 
 public:
+    //construtores e destrutor
     /**
      * @brief Construtor padrão
      */
@@ -39,6 +43,7 @@ public:
      */
     ~PerfilAcesso() override = default;
     
+    //getters
     /**
      * @brief Getters
      */
@@ -49,6 +54,7 @@ public:
     bool isSomHabilitado() const { return somHabilitado; }
     bool isMapearDrives() const { return mapearDrives; }
     
+    //setters
     /**
      * @brief Setters com validação
      */
@@ -59,6 +65,7 @@ public:
     void setSomHabilitado(bool somHabilitado) { this->somHabilitado = somHabilitado; }
     void setMapearDrives(bool mapearDrives) { this->mapearDrives = mapearDrives; }
     
+    //serialização (ISerializavel)
     /**
      * @brief Serializa o objeto para JSON
      * @return Objeto JSON com os dados do perfil
@@ -71,6 +78,7 @@ public:
      */
     void fromJson(const nlohmann::json& dados) override;
     
+    //exibição (Iexibivel)
     /**
      * @brief Exibe os detalhes do perfil de acesso
      */

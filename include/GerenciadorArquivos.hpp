@@ -7,12 +7,14 @@
 #include <string>
 #include <fstream>
 
+//classe gerenciadorarquivos
 /**
  * @brief Classe utilitária para gerenciamento de arquivos JSON
  * @note Usa métodos estáticos com templates para trabalhar com qualquer classe ISerializavel
  */
 class GerenciadorArquivos {
 public:
+    //métodos de lista (template)
     /**
      * @brief Salva uma lista de objetos em um arquivo JSON
      * @tparam T Tipo que implementa ISerializavel
@@ -74,6 +76,7 @@ public:
         }
     }
     
+    //métodos de configuração
     /**
      * @brief Salva configuração do usuário em um arquivo JSON
      * @param config Objeto de configuração a ser salvo
@@ -118,6 +121,7 @@ public:
         }
     }
     
+    //métodos utilitários
     /**
      * @brief Verifica se um arquivo existe
      * @param nomeArquivo Caminho do arquivo

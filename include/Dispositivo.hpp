@@ -5,17 +5,21 @@
 #include "DadoInvalidoException.hpp"
 #include <string>
 
+//classe dispositivo
 /**
  * @brief Classe abstrata base para representação de dispositivos no sistema
+ * @note Classes derivadas: TerminalCliente, ServidorAlvo
  */
 class Dispositivo : public ISerializavel, public IExibivel {
 protected:
+    //atributos
     int id;
     std::string ip;
     std::string hostname;
     bool online;
 
 public:
+    //construtores e destruidor
     /**
      * @brief Construtor padrão
      */
@@ -35,6 +39,22 @@ public:
      */
     virtual ~Dispositivo() = default;
     
+    //getters
+    /**
+     * @brief Getters
+     */
+    int getId() const { return id; }
+    std::string getIp() const { return ip; }
+    std::string getHostname() const { return hostname; }
+    bool isOnline() const { return online; }
+    
+    //setters
+    /**
+     * @brief Setters básicos
+     */
+    void setId(int id) { this->id = id; }
+    void setOnline(bool status) { this->online = status; }
+    
     /**
      * @brief Define um novo endereço IP com validação
      * @param novoIp Novo endereço IP
@@ -48,26 +68,14 @@ public:
      */
     void setHostname(const std::string& novoNome);
     
+    //métodos
     /**
      * @brief Verifica conectividade do dispositivo (ping)
      * @return true se o dispositivo estiver online, false caso contrário
      */
     bool ping() const;
     
-    /**
-     * @brief Getters
-     */
-    int getId() const { return id; }
-    std::string getIp() const { return ip; }
-    std::string getHostname() const { return hostname; }
-    bool isOnline() const { return online; }
-    
-    /**
-     * @brief Setters básicos
-     */
-    void setId(int id) { this->id = id; }
-    void setOnline(bool status) { this->online = status; }
-    
+    //serialização (Iserializavel)
     /**
      * @brief Serializa o objeto para JSON
      * @return Objeto JSON com os dados do dispositivo
@@ -80,6 +88,7 @@ public:
      */
     void fromJson(const nlohmann::json& dados) override;
     
+    //exibição (Iexibivel)
     /**
      * @brief Exibe os detalhes do dispositivo (método puramente virtual)
      * @note Classes derivadas devem implementar este método

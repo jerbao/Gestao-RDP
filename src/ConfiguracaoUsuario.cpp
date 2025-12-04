@@ -6,11 +6,13 @@
 using namespace std;
 using json = nlohmann::json;
 
+//construtores
 ConfiguracaoUsuario::ConfiguracaoUsuario() : nomeExibicao(""), tema("Claro") {}
 
 ConfiguracaoUsuario::ConfiguracaoUsuario(string nomeExibicao, string tema)
     : nomeExibicao(std::move(nomeExibicao)), tema(std::move(tema)) {}
 
+//setters
 void ConfiguracaoUsuario::setNomeExibicao(const string& nomeExibicao) {
     if (nomeExibicao.empty()) {
         throw DadoInvalidoException("Nome de exibição não pode ser vazio");
@@ -25,6 +27,7 @@ void ConfiguracaoUsuario::setTema(const string& tema) {
     this->tema = tema;
 }
 
+//serialização (Iserializavel)
 json ConfiguracaoUsuario::toJson() const {
     json j;
     j["nomeExibicao"] = nomeExibicao;
@@ -42,6 +45,7 @@ void ConfiguracaoUsuario::fromJson(const json& dados) {
     }
 }
 
+//exibição (Iexibivel)
 void ConfiguracaoUsuario::exibirDetalhes() const {
     cout << "[Config] Tema atual: " << tema << endl;
 }

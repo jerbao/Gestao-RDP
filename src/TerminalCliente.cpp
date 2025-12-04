@@ -5,6 +5,7 @@
 using namespace std;
 using json = nlohmann::json;
 
+//construtores
 TerminalCliente::TerminalCliente() : Dispositivo(), macAddress(""), localizacao("") {}
 
 TerminalCliente::TerminalCliente(int id, string ip, string hostname, bool online,
@@ -12,6 +13,7 @@ TerminalCliente::TerminalCliente(int id, string ip, string hostname, bool online
     : Dispositivo(id, std::move(ip), std::move(hostname), online),
       macAddress(std::move(macAddress)), localizacao(std::move(localizacao)) {}
 
+//setters
 void TerminalCliente::setLocalizacao(const string& local) {
     if (local.empty()) {
         throw DadoInvalidoException("Localização não pode ser vazia");
@@ -26,11 +28,13 @@ void TerminalCliente::setMacAddress(const string& mac) {
     this->macAddress = mac;
 }
 
+//métodos
 void TerminalCliente::enviarComandoWakeOnLan() const {
     cout << "[LOG] Registrando solicitação de Wake-on-LAN para o terminal " 
          << hostname << " (MAC: " << macAddress << ")" << endl;
 }
 
+//serialização (Iserializavel)
 json TerminalCliente::toJson() const {
     json j = Dispositivo::toJson();
     j["macAddress"] = macAddress;
@@ -49,6 +53,7 @@ void TerminalCliente::fromJson(const json& dados) {
     }
 }
 
+//exibição (Iexibivel)
 void TerminalCliente::exibirDetalhes() const {
     cout << "=== Detalhes do Terminal Cliente ===" << endl;
     Dispositivo::exibirDetalhesBase();

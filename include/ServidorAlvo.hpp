@@ -3,17 +3,21 @@
 #include "Dispositivo.hpp"
 #include <string>
 
+//classe servidorAlvo
 /**
  * @brief Classe que representa um Servidor Alvo para conexões RDP
+ * @note Herda de Dispositivo. Contém credenciais RDP e informações de VM
  */
 class ServidorAlvo : public Dispositivo {
 private:
+    //atributos
     std::string sistemaOperacional;
     int vmid;
     std::string usuarioRDP;
     std::string senhaRDP;
 
 public:
+    //construtores e destrutor
     /**
      * @brief Construtor padrão
      */
@@ -39,18 +43,7 @@ public:
      */
     ~ServidorAlvo() override = default;
     
-    /**
-     * @brief Atualiza as credenciais RDP
-     * @param user Novo usuário
-     * @param pass Nova senha
-     */
-    void atualizarCredenciais(const std::string& user, const std::string& pass);
-    
-    /**
-     * @brief Simula conexão RDP ao servidor
-     */
-    void conectarRDP() const;
-    
+    //getters
     /**
      * @brief Getters
      */
@@ -58,6 +51,7 @@ public:
     int getVmid() const { return vmid; }
     std::string getUsuarioRDP() const { return usuarioRDP; }
     
+    //setters
     /**
      * @brief Define o sistema operacional com validação
      * @param so Novo sistema operacional
@@ -73,6 +67,20 @@ public:
     void setVmid(int vmid);
     
     /**
+     * @brief Atualiza as credenciais RDP
+     * @param user Novo usuário
+     * @param pass Nova senha
+     */
+    void atualizarCredenciais(const std::string& user, const std::string& pass);
+    
+    //métodos
+    /**
+     * @brief Simula conexão RDP ao servidor
+     */
+    void conectarRDP() const;
+    
+    //serialização (Iserializavel)
+    /**
      * @brief Serializa o objeto para JSON
      * @return Objeto JSON com os dados do servidor
      */
@@ -84,6 +92,7 @@ public:
      */
     void fromJson(const nlohmann::json& dados) override;
     
+    //exibição (Iexibivel)
     /**
      * @brief Exibe os detalhes do servidor
      */

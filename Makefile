@@ -13,7 +13,10 @@ build/%.o: src/%.cpp
 	@mkdir -p build
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
+run: $(TARGET)
+	./$(TARGET)
+
 clean:
 	rm -rf build
 
-.PHONY: all clean
+.PHONY: all clean run

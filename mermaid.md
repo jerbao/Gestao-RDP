@@ -109,7 +109,7 @@ classDiagram
     ManutencaoAgendada ..|> ISerializavel
     ManutencaoAgendada ..|> IExibivel
 
-    %% --- NOVA CLASSE DE CONFIGURAÇÃO (Adicionada no código) ---
+    %% --- CLASSE DE CONFIGURAÇÃO ---
     class ConfiguracaoUsuario {
         -string nomeExibicao
         -string tema

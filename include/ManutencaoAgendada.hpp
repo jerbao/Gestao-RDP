@@ -4,17 +4,21 @@
 #include "IExibivel.hpp"
 #include <string>
 
+//classe manutencaoagendada
 /**
  * @brief Classe que representa uma Manutenção Agendada para um dispositivo
+ * @note Permite agendar manutenções preventivas nos terminais e servidores
  */
 class ManutencaoAgendada : public ISerializavel, public IExibivel {
 private:
+    //atributos
     int id;
     std::string dataPrevista;
     std::string descricao;
     int idDispositivo;
 
 public:
+    //construtores e destrutor
     /**
      * @brief Construtor padrão
      */
@@ -34,6 +38,7 @@ public:
      */
     ~ManutencaoAgendada() override = default;
     
+    //getters
     /**
      * @brief Getters
      */
@@ -42,6 +47,7 @@ public:
     std::string getDescricao() const { return descricao; }
     int getIdDispositivo() const { return idDispositivo; }
     
+    //setters
     /**
      * @brief Setters com validação
      */
@@ -50,6 +56,7 @@ public:
     void setDescricao(const std::string& descricao);
     void setIdDispositivo(int idDispositivo);
     
+    //serialização (Iserializavel)
     /**
      * @brief Serializa o objeto para JSON
      * @return Objeto JSON com os dados da manutenção
@@ -62,6 +69,7 @@ public:
      */
     void fromJson(const nlohmann::json& dados) override;
     
+    //exibição (Iexibivel)
     /**
      * @brief Exibe os detalhes da manutenção agendada
      */
