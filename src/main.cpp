@@ -427,16 +427,31 @@ void conectarRDP() {
         return;
     }
     
-    listarServidores();
-    int id = lerInt("Digite o ID do servidor: ");
+    //listagem (apenas ID, hostname e IP)
+    cout << "\n--- Selecione o Servidor para Conexão ---" << endl;
+    for (const auto& s : servidores) {
+        cout << "ID: " << s.getId() 
+             << " | Host: " << s.getHostname() 
+             << " (" << s.getIp() << ")" << endl;
+    }
     
-    for (const auto& servidor : servidores) {
-        if (servidor.getId() == id) {
-            servidor.conectarRDP();
-            return;
+    cout << "-----------------------------------------" << endl;
+    int idBusca = lerInt("Digite o ID do servidor: ");
+    
+    bool encontrado = false;
+    for (const auto& s : servidores) {
+        if (s.getId() == idBusca) {
+            cout << "\n---------------------------------" << endl;
+            s.conectarRDP();//exibe os detalhes completos de conexão
+            cout << "---------------------------------\n" << endl;
+            encontrado = true;
+            break;
         }
     }
-    cout << "Servidor não encontrado!" << endl;
+    
+    if (!encontrado) {
+        cout << "Servidor não encontrado!" << endl;
+    }
 }
 
 void menuServidores() {
@@ -794,8 +809,7 @@ void menuPrincipal() {
             case 5: menuConfiguracoes(); break;
             case 0:
                 salvarDados();
-                cout << "\nObrigado por usar o Sistema de Gestão RDP!" << endl;
-                cout << "Até logo, " << config.getNomeExibicao() << "!" << endl;
+                cout << "\nAté logo, " << config.getNomeExibicao() << "!" << endl;
                 break;
             default:
                 cout << "Opção inválida! Tente novamente." << endl;
