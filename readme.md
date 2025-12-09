@@ -46,5 +46,7 @@ Serialização Implícita: O uso de `j["chave"] = valor` utiliza a sobrecarga do
 Streams: O uso de `arquivo << json` utiliza a sobrecarga do operador de inserção de stream (bitwise left shift).
 
 Para compilar e rodar é só abrir o terminal, na raiz do projeto e rodar:
+
 make
+
 ./build/gestao_rdp
