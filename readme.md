@@ -40,11 +40,6 @@ JSON: Foi utilizado a biblioteca `nlohmann/json` para salvar todos os dados de f
 
 Preferências do Usuário: A classe `ConfiguracaoUsuario` salva e carrega automaticamente o "Nome de Exibição" e o "Tema" (Claro/Escuro) ao iniciar o programa.
 
-Sobrecarga de Operadores
-Foi feito a sobrecarga de operadores através da integração com a biblioteca JSON:
-Serialização Implícita: O uso de `j["chave"] = valor` utiliza a sobrecarga do operador `[]` e de atribuição `=`.
-Streams: O uso de `arquivo << json` utiliza a sobrecarga do operador de inserção de stream (bitwise left shift).
-
 Para compilar e rodar é só abrir o terminal, tendo um compilador C++ 20 ou superior, na raiz do projeto e rodar:
 
 make
