@@ -1,3 +1,6 @@
+Aluno: Jerônimo Rafael Bezerra Filho
+Matrícula: 20240039188
+
 O projeto conta com 16 classes/interfaces definidas:
 - Interfaces: `ISerializavel`, `IExibivel`
 - Abstratas: `Pessoa`, `Dispositivo`
@@ -42,5 +45,6 @@ Foi feito a sobrecarga de operadores através da integração com a biblioteca J
 Serialização Implícita: O uso de `j["chave"] = valor` utiliza a sobrecarga do operador `[]` e de atribuição `=`.
 Streams: O uso de `arquivo << json` utiliza a sobrecarga do operador de inserção de stream (bitwise left shift).
 
-Para compilar e Rodar é só abrir o terminal, na raiz do projeto e rodar:
+Para compilar e rodar é só abrir o terminal, na raiz do projeto e rodar:
 make
+./build/gestao_rdp
