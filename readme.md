@@ -36,7 +36,7 @@ Validação de Dados: Os setters lançam exceção se os dados forem inválidos 
 O `main.cpp` envolve as operações críticas em blocos `try-catch` para evitar falhas abruptas.
 
 Persistência em Arquivos e Configurações
-SON:** Foi utilizado a biblioteca `nlohmann/json` para salvar todos os dados de forma estruturada.
+JSON: Foi utilizado a biblioteca `nlohmann/json` para salvar todos os dados de forma estruturada.
 
 Preferências do Usuário: A classe `ConfiguracaoUsuario` salva e carrega automaticamente o "Nome de Exibição" e o "Tema" (Claro/Escuro) ao iniciar o programa.
 
@@ -45,7 +45,7 @@ Foi feito a sobrecarga de operadores através da integração com a biblioteca J
 Serialização Implícita: O uso de `j["chave"] = valor` utiliza a sobrecarga do operador `[]` e de atribuição `=`.
 Streams: O uso de `arquivo << json` utiliza a sobrecarga do operador de inserção de stream (bitwise left shift).
 
-Para compilar e rodar é só abrir o terminal, na raiz do projeto e rodar:
+Para compilar e rodar é só abrir o terminal, tendo um compilador C++ 20 ou superior, na raiz do projeto e rodar:
 
 make
 
