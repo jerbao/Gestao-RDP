@@ -1,0 +1,11 @@
+[
+    {
+        "id": 1,
+        "mapearDrives": true,
+        "nomePerfil": "Padrão",
+        "resolucao": "1280x720",
+        "somHabilitado": true,
+        "telaCheia": true,
+        "tipo": "PerfilAcesso"
+    }
+]

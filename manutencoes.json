@@ -1,0 +1,9 @@
+[
+    {
+        "dataPrevista": "15/12/2025",
+        "descricao": "Manutenção de ano novo",
+        "id": 1,
+        "idDispositivo": 314,
+        "tipo": "ManutencaoAgendada"
+    }
+]

@@ -1,0 +1,10 @@
+[
+    {
+        "cpf": "798.116.190-85",
+        "id": 1,
+        "nome": "João Lucas",
+        "senha": "456",
+        "tipo": "Operador",
+        "turno": "Tarde"
+    }
+]

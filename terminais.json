@@ -1,0 +1,11 @@
+[
+    {
+        "hostname": "laptop1",
+        "id": 1,
+        "ip": "192.168.1.100",
+        "localizacao": "Matriz",
+        "macAddress": "FB:B4:3E:EF:0B:4F",
+        "online": true,
+        "tipo": "TerminalCliente"
+    }
+]

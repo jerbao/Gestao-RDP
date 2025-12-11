@@ -1,0 +1,9 @@
+[
+    {
+        "acao": "reiniciou inesperadamente",
+        "cpfUsuario": "012.345.678-9",
+        "dataHora": "08/12/2025 13:13",
+        "id": 1,
+        "tipo": "LogAuditoria"
+    }
+]

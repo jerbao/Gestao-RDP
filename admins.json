@@ -1,0 +1,10 @@
+[
+    {
+        "chaveMestra": "321",
+        "cpf": "012.345.678-9",
+        "id": 1,
+        "nome": "Pedro Tiago",
+        "senha": "123",
+        "tipo": "Administrador"
+    }
+]
